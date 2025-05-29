@@ -2,6 +2,11 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
+import gzip
+import pickle
+
+with gzip.open("model.pkl.gz", "rb") as f:
+    model = pickle.load(f)
 
 # Load model and preprocessing tools
 model = joblib.load("model.pkl")
