@@ -2,11 +2,12 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
-import gzip
-import pickle
+import gdown
 
-with gzip.open("model.pkl.gz", "rb") as f:
-    model = pickle.load(f)
+file_id = "1pCa6lHBhbIrCHbEzyKyP72xN5VyeC8aw"
+url = f"https://drive.google.com/uc?id={file_id}"
+output = "model.pkl"
+gdown.download(url, output, quiet=False)
 
 # Load model and preprocessing tools
 model = joblib.load("model.pkl")
