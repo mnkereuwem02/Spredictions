@@ -16,6 +16,7 @@ Here’s an overview of the key components:
 ├── model.ipynb  
 ├── encoders.pkl  
 ├── scaler.pkl  
+---elasticity_model
 └── requirements.txt  
 
 Setup and Installation
@@ -53,3 +54,4 @@ To ensure a more reliable, accessible, and seamless experience, I chose to redep
 All core features, including the Streamlit-based UI and predictive analytics, remain fully aligned with the original project objectives.
 
 You can view the deployed application here:  
+https://spredictions.streamlit.app/
