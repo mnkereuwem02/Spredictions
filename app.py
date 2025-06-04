@@ -132,18 +132,18 @@ if st.button("Predict Results"):
     # Preparing input for the ML model for quantity prediction.
     # The training features order is assumed to be:
     # ['Price_x', 'Price_y', 'Price_Ratio', 'Customer_Segment', 'Ship Mode', 'State_x', 'City_x', 'Region', 'Order Year']
-    ml_input = np.array([[price, competitor_price, price_ratio, Segment, ship_mode_encoded, state_encoded, city_encoded, region_encoded,category_encoded,sub_category_encoded, order_year]])
-    ml_input_scaled = scaler_ml.transform(ml_input)
-    predicted_quantity = rf_model.predict(ml_input_scaled)[0]
+        ml_input = np.array([[price, competitor_price, price_ratio, Segment, ship_mode_encoded, state_encoded, city_encoded, region_encoded,category_encoded,sub_category_encoded, order_year]])
+        ml_input_scaled = scaler_ml.transform(ml_input)
+        predicted_quantity = rf_model.predict(ml_input_scaled)[0]
 
     # Compute estimated revenue
-    estimated_revenue = price * predicted_quantity
+        estimated_revenue = price * predicted_quantity
 
     # Display results
-    st.subheader("Results")
-    st.write(f"**Estimated Elasticity:** {predicted_elasticity:.2f}")
-    st.write(f"**Predicted Quantity Sold:** {predicted_quantity:.0f}")
-    st.write(f"**Projected Revenue:** ${estimated_revenue:,.2f}")
+        st.subheader("Results")
+        st.write(f"**Estimated Elasticity:** {predicted_elasticity:.2f}")
+        st.write(f"**Predicted Quantity Sold:** {predicted_quantity:.0f}")
+        st.write(f"**Projected Revenue:** ${estimated_revenue:,.2f}")
 
     # Revenue Optimization: Iterate through price options and compute the revenue
     st.subheader("Optimal Pricing Analysis")
