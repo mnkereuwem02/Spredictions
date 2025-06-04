@@ -120,7 +120,14 @@ if st.button("Predict Results"):
     # Preparing input for the demand elasticity model
     # We add a constant (1) for the regression intercept; the model was trained on [const, log_Price, Price_Ratio]
     
+    try:
+    # Make sure 'price' exists and is valid. For example, if price is an input, ensure it’s defined.
         elasticity_input = np.array([[1, np.log(price), price_ratio]])
+    except Exception as e:
+    # Log the error for debugging (optionally, print to logs) but only show a user-friendly message.
+        st.error("There was an error computing the elasticity input. Please check your inputs.")
+    # Optionally, you can set a fallback value for elasticity_input:
+        elasticity_input = np.array([[np.nan, np.nan, np.nan]])
         predicted_elasticity = elasticity_model.predict(elasticity_input)[0]
     
     # Preparing input for the ML model for quantity prediction.
