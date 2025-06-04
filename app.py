@@ -12,6 +12,7 @@ scaler_ml = joblib.load('scaler.pkl')
 label_encoders = joblib.load('encoders.pkl')
 
 # Load dataset for reference
+df = pd.read_csv('exported_file.csv')
 
 # Sidebar for user input
 # Dictionary mapping states to cities
