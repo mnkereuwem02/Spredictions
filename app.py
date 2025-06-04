@@ -120,8 +120,8 @@ if st.button("Predict Results"):
     # Preparing input for the demand elasticity model
     # We add a constant (1) for the regression intercept; the model was trained on [const, log_Price, Price_Ratio]
     
-    elasticity_input = np.array([[1, np.log(price), price_ratio]])
-    predicted_elasticity = elasticity_model.predict(elasticity_input)[0]
+        elasticity_input = np.array([[1, np.log(price), price_ratio]])
+        predicted_elasticity = elasticity_model.predict(elasticity_input)[0]
     
     # Preparing input for the ML model for quantity prediction.
     # The training features order is assumed to be:
