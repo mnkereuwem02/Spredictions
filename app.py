@@ -11,6 +11,22 @@ rf_model = joblib.load('model.pkl')
 scaler_ml = joblib.load('scaler.pkl')
 label_encoders = joblib.load('encoders.pkl')
 
+def encode_feature(feature_name, value):
+    try:
+        # If the value is already numeric, return it as an int.
+        return int(value)
+    except (ValueError, TypeError):
+        if feature_name in label_encoders:
+            encoder = label_encoders[feature_name]
+            # Preprocess value if needed
+            value_processed = value.strip() if isinstance(value, str) else value
+            # Check if the processed value is among the known classes:
+            if value_processed not in encoder.classes_:
+                raise ValueError(f"Value '{value_processed}' not seen during training for feature '{feature_name}'. Known classes: {encoder.classes_}")
+            # Return the encoded value
+            return int(encoder.transform([value_processed])[0])
+        return value
+
 
 
 
